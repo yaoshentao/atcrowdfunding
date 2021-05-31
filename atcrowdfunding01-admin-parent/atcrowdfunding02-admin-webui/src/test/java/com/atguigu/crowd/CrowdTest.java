@@ -57,7 +57,7 @@ public class CrowdTest {
         logger.debug("Debug");
         logger.debug("Debug");
 
-        logger.info("Info");
+        logger.info("你好");
         logger.warn("Warn");
         logger.error("Error");
     }
