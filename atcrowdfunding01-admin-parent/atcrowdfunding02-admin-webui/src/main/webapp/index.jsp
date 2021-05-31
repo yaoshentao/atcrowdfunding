@@ -3,6 +3,7 @@
 <head>
   <title>测试页面</title>
   <script type="text/javascript" src="js/jquery/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="layer/layer.js"></script>
   <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/">
   <script type="text/javascript">
     $(function (){
@@ -45,7 +46,11 @@
           }
         });
       });
-
+  
+      $("#btn04").click(function (){
+        layer.msg("layer的弹框");
+      });
+      
       $("#btn03").click(function (){
         // 准备要发送的数据
         var student = {
@@ -98,6 +103,7 @@
   <button id="btn01">Send text</button>
   <button id="btn02">Send text2</button>
   <button id="btn03">Send text3</button>
+  <button id="btn04">Send text4</button>
   <form action="/test/ssm.html" method="post">
     <input type="submit" class="button">
   </form>

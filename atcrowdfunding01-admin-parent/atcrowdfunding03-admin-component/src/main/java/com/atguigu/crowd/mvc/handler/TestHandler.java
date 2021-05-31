@@ -50,9 +50,6 @@ public class TestHandler {
 
         List<Admin> adminList = adminService.getAllAdmin();
         modelMap.addAttribute("adminList", adminList);
-//        System.out.println(10/0);
-        String a=null;
-        System.out.println(a.length());
         return "target";
     }
 
@@ -60,8 +57,6 @@ public class TestHandler {
     @RequestMapping("/send/compose/object.json")
     public ResultEntity<Student> testReceiveComplicatedObject(@RequestBody Student student, HttpServletRequest request){
         boolean judgeRequest = CrowdUtil.judgeRequestType(request);
-        String a=null;
-        System.out.println(a.length());
         logger.info("judgeRequest:"+judgeRequest);
         logger.info(student.toString());
         return ResultEntity.successWithData(student);
