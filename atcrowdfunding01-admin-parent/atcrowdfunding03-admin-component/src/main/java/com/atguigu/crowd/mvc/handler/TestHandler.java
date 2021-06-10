@@ -50,6 +50,9 @@ public class TestHandler {
 
         List<Admin> adminList = adminService.getAllAdmin();
         modelMap.addAttribute("adminList", adminList);
+
+        System.out.println(10/0);
+
         return "target";
     }
 

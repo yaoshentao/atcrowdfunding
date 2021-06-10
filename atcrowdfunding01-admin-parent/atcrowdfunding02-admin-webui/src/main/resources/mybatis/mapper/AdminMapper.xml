@@ -90,6 +90,13 @@
     from t_admin
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAdminByKeyWord" resultMap="BaseResultMap">
+    select id, login, user_pswd, user_name, email, create_time
+    from t_admin
+    where login like concat("%", #{keyword},"%") or
+    user_name like concat("%", #{keyword},"%") or
+    email like concat("%", #{keyword},"%")
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_admin
     where id = #{id,jdbcType=INTEGER}

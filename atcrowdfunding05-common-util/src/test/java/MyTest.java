@@ -16,4 +16,10 @@ public class MyTest {
         String encode = CrowdUtil.md5(source);
         System.out.println(encode);
     }
+
+    @Test
+    public void Mytest2(){
+        StudentTest s = new StudentTest();
+        //StudentTest.Child c = new StudentTest.Child();
+    }
 }

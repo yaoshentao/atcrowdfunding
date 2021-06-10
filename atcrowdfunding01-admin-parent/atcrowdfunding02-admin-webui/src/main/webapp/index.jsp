@@ -104,6 +104,7 @@
   <button id="btn02">Send text2</button>
   <button id="btn03">Send text3</button>
   <button id="btn04">Send text4</button>
+  <a href="${pageContext.request.contextPath}/admin/to/login/page.html">点击进入登录页面</a>
   <form action="/test/ssm.html" method="post">
     <input type="submit" class="button">
   </form>

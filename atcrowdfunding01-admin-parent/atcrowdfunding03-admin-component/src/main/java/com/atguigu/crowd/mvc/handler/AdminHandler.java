@@ -3,8 +3,11 @@ package com.atguigu.crowd.mvc.handler;
 import com.atguigu.crowd.constant.CrowdConstant;
 import com.atguigu.crowd.entity.Admin;
 import com.atguigu.crowd.service.api.AdminService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,6 +32,66 @@ public class AdminHandler {
                           HttpSession httpSession){
         Admin admin = adminService.getAdminByLoginAcct(loginAcct, userPswd);
         httpSession.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_ADMIN, admin);
-        return "admin-main";
+        return "redirect:/admin/to/main/page.html";
     }
+
+    @RequestMapping("admin/do/logout.html")
+    public String doLoginOut(HttpSession session){
+        //强制Session失效
+        session.invalidate();
+        return "redirect:/admin/to/login/page.html";
+    }
+
+    @RequestMapping("/admin/get/page.html")
+    public String getPage(
+            // defaultValue使用的默认值
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+            ModelMap modelMap){
+        //调动service方法获取PageInfo对象
+        PageInfo<Admin> pageInfo = adminService.getPageInfo(keyword, pageNum, pageSize);
+
+        // 将pageInfo存入模型
+        modelMap.addAttribute(CrowdConstant.ATTR_NAME_PAGE_INFO, pageInfo);
+        return "admin-page";
+    }
+
+    // 删除成员
+    @RequestMapping("/admin/remove/{adminId}/{pageNum}/{keyword}.html")
+    public String remove(@PathVariable("adminId") Integer adminId,
+                         @PathVariable("pageNum") Integer pageNum,
+                         @PathVariable("keyword") String keyword) {
+        // 执行删除
+        adminService.remove(adminId);
+
+        // 页面跳转：回到分页页面
+        return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
+    }
+
+    // 新增成员
+    @RequestMapping("/admin/save.html")
+    public String save(Admin admin) {
+        adminService.saveAdmin(admin);
+        return "redirect:/admin/get/page.html?pageNum="+Integer.MAX_VALUE;
+    }
+
+    // 修改成员信息
+    @RequestMapping("/admin/to/edit.html")
+    public String toEdit(@RequestParam("adminId") Integer adminId,
+                         ModelMap modelMap) {
+        Admin admin = adminService.getAdminById(adminId);
+        modelMap.addAttribute("admin", admin);
+        return "admin-edit";
+    }
+
+    // 提交更新信息
+    @RequestMapping(value = "/admin/update.html")
+    public String update(Admin admin,
+                         @RequestParam(value = "keyword",defaultValue = "") String keyword,
+                         @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+        adminService.update(admin);
+        return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.atguigu.crowd.config;
 
 import com.atguigu.crowd.constant.CrowdConstant;
+import com.atguigu.crowd.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.atguigu.crowd.exception.LoginFailedException;
 import com.atguigu.crowd.util.CrowdUtil;
 import com.atguigu.crowd.util.ResultEntity;
@@ -24,7 +25,6 @@ import java.io.IOException;
 //基于注解的异常处理类
 @ControllerAdvice
 public class CrowdExceptionResolver {
-
 
     @ExceptionHandler(value = LoginFailedException.class)
     public ModelAndView resolveLoginFailedException(LoginFailedException exception,
@@ -68,5 +68,14 @@ public class CrowdExceptionResolver {
         // 10. 设置对应的视图名称
         modelAndView.setViewName(viewName);
         return modelAndView;
+    }
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseForUpdateException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseForUpdateException(LoginAcctAlreadyInUseForUpdateException exception,
+                                                                       HttpServletRequest request,
+                                                                       HttpServletResponse response) throws IOException {
+        String viewName = "system-error";
+        System.out.println(viewName);
+        return commonResolve(viewName, exception, request, response);
     }
 }

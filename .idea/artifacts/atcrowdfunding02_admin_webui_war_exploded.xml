@@ -14,7 +14,6 @@
           <element id="module-output" name="atcrowdfunding02-admin-webui" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.26" />
           <element id="archive" name="atcrowdfunding03-admin-component-1.0-SNAPSHOT.jar">
             <element id="module-output" name="atcrowdfunding03-admin-component" />
           </element>
@@ -24,7 +23,9 @@
           <element id="archive" name="atcrowdfunding05-common-util-1.0-SNAPSHOT.jar">
             <element id="module-output" name="atcrowdfunding05-common-util" />
           </element>
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.26" />
+          <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.2.0" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:3.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.2.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.2.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.2.11.RELEASE" />
@@ -40,8 +41,6 @@
           <element id="library" level="project" name="Maven: javax.annotation:javax.annotation-api:1.3.2" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.3" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.5" />
-          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:5.2.0" />
-          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:3.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.11.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.11.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.11.3" />
@@ -49,6 +48,13 @@
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.1" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.6" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.5" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.0.13" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.0.13" />
+          <element id="library" level="project" name="Maven: ch.qos.logback:logback-access:1.0.13" />
+          <element id="library" level="project" name="Maven: org.logback-extensions:logback-ext-spring:0.1.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.2.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.2.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.6" />

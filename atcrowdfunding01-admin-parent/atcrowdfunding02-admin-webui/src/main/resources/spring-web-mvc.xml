@@ -31,6 +31,25 @@
 
 <!--    spring mvc的配置视图controller-->
     <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
+    <mvc:view-controller path="/admin/to/add.html" view-name="admin-add"/>
+    <mvc:view-controller path="/role/get/page.html" view-name="role-page"/>
+    <mvc:view-controller path="/menu/to/page.do" view-name="menu-page"/>
+
+
     <mvc:default-servlet-handler/>
+
+<!--    注册拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--需要拦截的资源-->
+            <mvc:mapping path="/**"/>
+            <!--不需要拦截的资源-->
+            <mvc:exclude-mapping path="/admin/to/login/page.html"/>
+            <mvc:exclude-mapping path="/admin/do/login.html"/>
+            <mvc:exclude-mapping path="/admin/do/logout.html"/>
+            <bean class="com.atguigu.crowd.mvc.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
