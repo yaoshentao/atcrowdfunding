@@ -24,4 +24,6 @@ public interface AdminService {
 
     Admin getAdminById(Integer adminId);
 
+    void saveAdminRoleRelationship(Integer adminId, List<Integer> roleIdList);
+
 }

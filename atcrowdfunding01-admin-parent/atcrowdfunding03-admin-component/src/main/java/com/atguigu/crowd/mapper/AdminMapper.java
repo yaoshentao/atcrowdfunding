@@ -3,6 +3,8 @@ package com.atguigu.crowd.mapper;
 import com.atguigu.crowd.entity.Admin;
 import com.atguigu.crowd.entity.AdminExample;
 import java.util.List;
+
+import com.atguigu.crowd.entity.Role;
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminMapper {
@@ -10,7 +12,7 @@ public interface AdminMapper {
 
     int deleteByExample(AdminExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    void deleteByPrimaryKey(Integer id);
 
     int insert(Admin record);
 
@@ -24,9 +26,13 @@ public interface AdminMapper {
 
     int updateByExample(@Param("record") Admin record, @Param("example") AdminExample example);
 
-    int updateByPrimaryKeySelective(Admin record);
+    void updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
 
     List<Admin> selectAdminByKeyWord(String keyword);
+
+    void deleteOldRelationship(Integer adminId);
+
+    void insertNewRelationship(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
 }
