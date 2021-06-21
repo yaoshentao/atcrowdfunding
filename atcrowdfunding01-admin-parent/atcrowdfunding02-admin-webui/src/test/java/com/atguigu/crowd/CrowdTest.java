@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
@@ -73,13 +74,21 @@ public class CrowdTest {
         logger.error("Error");
     }
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Test
+    public void testPassword11(){
+        System.out.println(passwordEncoder.encode("123123"));
+    }
+
     @Test
     public void testCreateData(){
         Admin admin;
         for (int i = 0; i < 10; i++) {
             String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
             String password = String.valueOf((int)(Math.random()*900000 + 100000));;
-            String userPswd = CrowdUtil.md5(password);
+            String userPswd = passwordEncoder.encode(password);
             String login = getStringRandom(5);
             String userName = login.substring(0,3);
             admin = new Admin(null,captureName(login),userPswd,userName,userName+"@qq.com",date);

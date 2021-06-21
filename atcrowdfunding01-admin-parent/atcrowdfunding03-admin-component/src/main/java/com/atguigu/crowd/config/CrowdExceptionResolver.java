@@ -26,12 +26,12 @@ import java.io.IOException;
 @ControllerAdvice
 public class CrowdExceptionResolver {
 
-    @ExceptionHandler(value = LoginFailedException.class)
-    public ModelAndView resolveLoginFailedException(LoginFailedException exception,
-                                                    HttpServletRequest request,
-                                                    HttpServletResponse response
-                                                    ) throws IOException {
-        String viewName="admin-login";
+    // 未登录异常
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView resolveException(Exception exception,
+                                         HttpServletRequest request,
+                                         HttpServletResponse response) throws IOException {
+        String viewName = "admin-login";
         return commonResolve(viewName,exception,request,response);
     }
 

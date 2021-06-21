@@ -10,7 +10,6 @@
         <module name="atcrowdfunding03-admin-component" />
         <module name="atcrowdfunding06-common-reverse" />
         <module name="atcrowdfunding02-admin-webui" />
-        <module name="pro2-spring-security" />
         <module name="atcrowdfunding04-admin-entity" />
       </profile>
     </annotationProcessing>
@@ -21,7 +20,8 @@
       <module name="atcrowdfunding04-admin-entity" target="1.8" />
       <module name="atcrowdfunding05-common-util" target="1.8" />
       <module name="atcrowdfunding06-common-reverse" target="1.5" />
-      <module name="pro2-spring-security" target="1.5" />
+      <module name="pro2-spring-security" target="1.8" />
+      <module name="spring-security" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
